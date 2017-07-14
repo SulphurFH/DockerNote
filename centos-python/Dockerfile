@@ -1,7 +1,6 @@
-FROM hub.zhengyitech.com/centos:7.2.1511
+FROM centos:7.2.1511
 
-LABEL name="hub.zhengyitech.com/sep/centos-python"
-LABEL version="2.7.12.1493890900"
+LABEL name="centos-python"
 
 # Install yum dependencies
 RUN yum -y update && \
