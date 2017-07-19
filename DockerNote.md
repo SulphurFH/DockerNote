@@ -46,3 +46,7 @@
 
 >       docker run -d -p 3306:3306 -v /var/lib/docker/vfs/dir/mydata:/var/lib/mysql csphere/mysql:5.5   # VOLUME参数:之前的表示宿主机路径，之后表示容器内路径
 >       当container删除之后，VOLUME的数据会在还会一直保存在宿主机，重新创建一个container，指定之前的-v，可以恢复数据
+
+## Docker compose
+
+>       sudo docker-compose -f etc/docker-compose-supervisor.yml down && sudo docker-compose -f etc/docker-compose-supervisor.yml up -d   # 使用docker-compose重启容器
