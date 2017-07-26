@@ -9,9 +9,5 @@ if [ ! -d "$VENV_ACTIVATE_PATH" ]; then
 fi
 source $VENV_ACTIVATE_PATH
 
-pip install uwsgi==2.0.12
-
-uwsgi --http :8000 --wsgi-file bin/foobar.py
-
-# exec "$@"
+exec "$@"
 
