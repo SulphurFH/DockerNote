@@ -21,6 +21,12 @@ RUN apt-get update && \
                        python-dev \
                        python-pip && \
     rm -rf /var/lib/apt/lists/*
+# RUN cd /root && mkdir .pip && touch .pip/pip.conf
+# RUN echo '[global]\n\
+# index-url = http://mirrors.aliyun.com/help/pypi\n\
+# [install]\n\
+# trusted-host=mirrors.aliyun.com' > ~/.pip/pip.conf
+ADD pip.conf /root/.pip/pip.conf
 RUN pip install virtualenv
 
 CMD ["python"]
