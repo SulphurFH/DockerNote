@@ -9,6 +9,8 @@ WORKDIR /opt/django/project
 # create uwsgi pid dir && /opt/django/bin
 RUN mkdir -p /opt/django/bin
 RUN mkdir -p /opt/django/project
+ADD foobar.py /opt/django/bin/
+RUN chmod +x /opt/django/bin/foobar.py
 # add entrypoint.sh -- ENTRYPOINT script, setup virtualenv
 ADD entrypoint.sh /opt/django/bin/
 RUN chmod +x /opt/django/bin/entrypoint.sh

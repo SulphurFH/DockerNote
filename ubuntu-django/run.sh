@@ -8,3 +8,4 @@ pip install -r requirements.txt
 python manage.py runserver 0.0.0.0:8001
 # uwsgi --ini etc/uwsgi.ini
 
+
