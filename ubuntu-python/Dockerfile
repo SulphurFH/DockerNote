@@ -21,6 +21,7 @@ RUN apt-get update && \
                        python-dev \
                        python-pip && \
     rm -rf /var/lib/apt/lists/*
+ADD pip.conf /root/.pip/pip.conf
 RUN pip install virtualenv
 
 CMD ["python"]
