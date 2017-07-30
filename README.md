@@ -1,5 +1,7 @@
 # dockerfile
-
+    两个基础Docker环境的Dockerfile文件，构建完成基础镜像后
+    请使用本GitHub中的docker_django_project进行项目自动化部署
+    (如果需要自定义设置EXPOSE和VOLUME，请自行修改ubuntu-django中的Dockerfile，记得同时修改docker_django_project的docker-compose文件)
 ## ubuntu-python
 
 >   git clone git@github.com:SulphurFH/dockerfile.git
@@ -14,8 +16,3 @@
 
 >   docker build -t fanghao/ubuntu-django:1.0 .
 
->   docker run -d -p 8000:8000 -v /opt/django/logs:/opt/django/logs -v /opt/django/project:/opt/django/project --name django fanghao/ubuntu-django:1.0
-
->   docker exec -it django /bin/bash
-
->   浏览器访问宿主机名+8000端口，如：192.168.0.100:8000
