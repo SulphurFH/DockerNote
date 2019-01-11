@@ -1,0 +1,24 @@
+version: "3.3"
+
+services:
+  db:
+    image: mongo:${TAG}
+    container_name: mongo${TAG}
+    restart: always
+    command: mongod --auth
+    networks:
+      net:
+        ipv4_address: 172.19.0.3
+    ports:
+      - "27017:27017"
+    volumes:
+      - ~/docker/data/mongo3.4/configdb:/data/configdb
+      - ~/docker/data/mongo3.4/db:/data/db
+
+
+networks:
+  net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.19.0.0/16

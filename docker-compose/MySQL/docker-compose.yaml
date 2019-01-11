@@ -1,0 +1,24 @@
+version: "3.3"
+
+services:
+  db:
+    image: mysql:${TAG}
+    container_name: mysql${TAG}
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MASTER_MYSQL_ROOT_PASSWORD}
+    networks:
+      net:
+        ipv4_address: 172.18.0.3
+    ports:
+      - "3306:3306"
+    volumes:
+      - ~/docker/data/mysql5.5:/var/lib/mysql
+
+
+networks:
+  net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
