@@ -14,6 +14,8 @@ services:
     volumes:
       - ~/docker/data/mongo3.4/configdb:/data/configdb
       - ~/docker/data/mongo3.4/db:/data/db
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
 
 
 networks:
