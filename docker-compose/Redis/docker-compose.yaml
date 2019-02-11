@@ -1,0 +1,26 @@
+version: "3.3"
+
+services:
+  db:
+    image: redis:${TAG}
+    container_name: redis${TAG}
+    restart: always
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      net:
+        ipv4_address: 172.20.0.3
+    ports:
+      - "6379:6379"
+    volumes:
+      - ~/docker/data/redis${TAG}:/data
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
+
+
+networks:
+  net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
