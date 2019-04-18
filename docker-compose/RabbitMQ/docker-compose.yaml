@@ -1,0 +1,31 @@
+version: "3.3"
+
+services:
+  db:
+    image: rabbitmq:${TAG}
+    container_name: rabbitmq${TAG}
+    restart: always
+    environment:
+      RABBITMQ_ERLANG_COOKIE: ${COOKIE}
+      RABBITMQ_DEFAULT_USER: ${USER}
+      RABBITMQ_DEFAULT_PASS: ${PASS}
+      RABBITMQ_DEFAULT_VHOST: ${VHOST}
+    networks:
+      net:
+        ipv4_address: 172.21.0.3
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - ~/docker/data/rabbitmq${TAG}/rabbitmq-data:/var/lib/rabbitmq
+      - ./enabled_plugins:/etc/rabbitmq/enabled_plugins
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
+
+
+networks:
+  net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
