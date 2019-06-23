@@ -1,0 +1,15 @@
+version: "3.3"
+
+services:
+  db:
+    image: mongo:${TAG}
+    container_name: mongo${TAG}
+    restart: always
+    command: mongod --auth
+    ports:
+      - "27017:27017"
+    volumes:
+      - ~/docker/data/mongo${TAG}/configdb:/data/configdb
+      - ~/docker/data/mongo${TAG}/db:/data/db
+      - ./timezone:/etc/timezone
+      - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
