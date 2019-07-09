@@ -7,20 +7,9 @@ services:
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=${MASTER_MYSQL_ROOT_PASSWORD}
-    networks:
-      net:
-        ipv4_address: 172.18.0.3
     ports:
       - "3306:3306"
     volumes:
       - ~/docker/data/mysql${TAG}:/var/lib/mysql
       - /etc/timezone:/etc/timezone
       - /etc/localtime:/etc/localtime
-
-
-networks:
-  net:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.18.0.0/16

@@ -6,9 +6,6 @@ services:
     container_name: mongo${TAG}
     restart: always
     command: mongod --auth
-    networks:
-      net:
-        ipv4_address: 172.19.0.3
     ports:
       - "27017:27017"
     volumes:
@@ -16,11 +13,3 @@ services:
       - ~/docker/data/mongo${TAG}/db:/data/db
       - /etc/timezone:/etc/timezone
       - /etc/localtime:/etc/localtime
-
-
-networks:
-  net:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.19.0.0/16
