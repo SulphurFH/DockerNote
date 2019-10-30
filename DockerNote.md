@@ -69,3 +69,14 @@ docker run -d -p 3306:3306 -v /var/lib/docker/vfs/dir/mydata:/var/lib/mysql csph
 ```
 sudo docker-compose -f etc/docker-compose-supervisor.yml down && sudo docker-compose -f etc/docker-compose-supervisor.yml up -d   # 使用docker-compose重启容器
 ```
+
+## 常用docker容器命令
+
+```
+# Adminer
+sudo docker pull adminer
+sudo docker run -d --link mysql5.7:db --net mysql_net -p 9000:8080 --restart=always adminer
+
+# thrift 生成相应代码文件并删除容器，把编译好的thirft当做命令使用
+sudo docker run -v "/home/fanghao/docker/data/thrift:/data" thrift thrift -o /data --gen py /data/book.thrift && sudo docker rm -f `sudo docker ps -n=1 | awk 'NR > 1 {print $1}'`
+```
