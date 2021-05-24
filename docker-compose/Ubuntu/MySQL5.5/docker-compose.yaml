@@ -1,0 +1,15 @@
+version: "3.3"
+
+services:
+  db:
+    image: mysql:${TAG}
+    container_name: mysql${TAG}
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MASTER_MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3307:3306"
+    volumes:
+      - ~/docker/data/mysql${TAG}:/var/lib/mysql
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
